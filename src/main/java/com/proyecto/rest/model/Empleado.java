@@ -1,5 +1,6 @@
 package com.proyecto.rest.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -13,12 +14,11 @@ public class Empleado {
 	public Empleado(){}
 
 	public Empleado(long id, String nombre, String apellidos, Date fechaNacimiento, List<Cita> citas) {
-		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.fechaNacimiento = fechaNacimiento;
-		this.citas = citas;
+		this.citas = new ArrayList<Cita>();
 	}
 
 	public long getId() {

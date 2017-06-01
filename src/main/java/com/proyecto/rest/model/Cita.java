@@ -10,7 +10,6 @@ public class Cita {
 	public Cita(){}
 
 	public Cita(Long id, String texto, Date fecha) {
-		super();
 		this.id = id;
 		this.texto = texto;
 		this.fecha = fecha;
