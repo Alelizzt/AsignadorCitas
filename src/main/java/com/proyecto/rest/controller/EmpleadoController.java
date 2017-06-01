@@ -62,16 +62,16 @@ public class EmpleadoController {
 	private void init(){
 		repo = new ArrayList<Empleado>();
 		
-		repo.add(new Empleado(1L, "Pepe","Gotera",new Date(), null));
+		repo.add(new Empleado(1L, "Pepe","Gotera",new Date(),null));
 		repo.get(0).getCitas().add(new Cita(1L, "Reunion de trabajo", new Date()));
 		repo.get(0).getCitas().add(new Cita(2L, "Visita a un cliente", new Date()));
 		
 		repo.add(new Empleado(2L, "Otilio", "Garcia", new Date(), null));
 		repo.get(1).getCitas().add(new Cita(3L, "Visita a un proveedor", new Date()));
 		
-		repo.add(new Empleado(3L, "Pepe","Gotera",new Date(), null));
-		repo.add(new Empleado(4L, "Pepe","Gotera",new Date(), null));
-		repo.add(new Empleado(5L, "Pepe","Gotera",new Date(), null));
+		repo.add(new Empleado(3L, "Pepe","Gotera",new Date(),null));
+		repo.add(new Empleado(4L, "Pepe","Gotera",new Date(),null));
+		repo.add(new Empleado(5L, "Pepe","Gotera",new Date(),null));
 			
 	}
 }
