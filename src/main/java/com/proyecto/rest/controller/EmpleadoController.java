@@ -36,7 +36,7 @@ public class EmpleadoController {
 	
 	@GetMapping("/empleado/{id}/cita")
 	public List<Cita> getCitasEmpleado(@PathVariable Long id){
-		if(id<0 && id<= repo.size()){
+		if(id>0 && id<=repo.size()){
 			return repo.get((int)(id-1)).getCitas();
 		}
 		return null;
