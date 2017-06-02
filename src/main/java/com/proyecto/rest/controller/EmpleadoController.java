@@ -5,11 +5,14 @@ import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.NoHandlerFoundException;
 
 import com.proyecto.rest.model.Cita;
 import com.proyecto.rest.model.Empleado;
@@ -26,12 +29,21 @@ public class EmpleadoController {
 		return repo;
 	}
 	
+	/**
+	 * 
+	 * @param id Identificacion del empleado
+	 * @param response	En caso de no existencia del empleado utilizamos la cabecera de http
+	 * @return Empleado con la identificacion proporcionada
+	 */
 	@GetMapping("/empleado/{id}")
-	public Empleado getEmpleado(@PathVariable Long id){
+	public Empleado getEmpleado(@PathVariable Long id, HttpServletResponse response){
 		if(id>0 && id<=repo.size()){
 			return repo.get((int)(id-1));
 		}
-		return null;
+		else{
+			response.setStatus(404);
+			return null;
+		}
 	}
 	
 	@GetMapping("/empleado/{idEm}/cita")
@@ -42,8 +54,16 @@ public class EmpleadoController {
 		return null;
 	}
 	
+	/**
+	 * 
+	 * @param idE identificacion del empleado
+	 * @param idC identificacion de la Cita
+	 * @param request manejo de excepcion por cabecera
+	 * @return Objeto de tipo Cita
+	 * @throws NoHandlerFoundException Excepcion que retorna 404 
+	 */
 	@GetMapping("/empleado/{idE}/cita/{idC}")
-	public Cita getCitaEmpleado(@PathVariable Long idE, @PathVariable Long idC){
+	public Cita getCitaEmpleado(@PathVariable Long idE, @PathVariable Long idC, HttpServletRequest request) throws NoHandlerFoundException{
 		Cita result = null;
 		if(idE>0 && idE <= repo.size()){
 			List<Cita> citas = repo.get((int)(idE-1)).getCitas();
@@ -55,7 +75,10 @@ public class EmpleadoController {
 				}
 			}
 		}
-		return result;
+		if(result!=null)
+			return result;
+		else
+			throw new NoHandlerFoundException("GET", request.getRequestURL().toString(), null);
 	}
 	
 	
