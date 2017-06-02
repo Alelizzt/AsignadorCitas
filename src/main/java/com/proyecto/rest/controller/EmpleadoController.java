@@ -13,9 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.proyecto.rest.model.Cita;
 import com.proyecto.rest.model.Empleado;
-//@SpringBootApplication
+
 @RestController
- @RequestMapping("/api")
+
+@RequestMapping("/api")
 public class EmpleadoController {
 	
 	List<Empleado> repo;
