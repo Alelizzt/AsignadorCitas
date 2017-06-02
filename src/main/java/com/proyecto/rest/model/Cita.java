@@ -2,6 +2,10 @@ package com.proyecto.rest.model;
 
 import java.util.Date;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Cita {
 	private Long id;
 	private String texto;
@@ -15,6 +19,7 @@ public class Cita {
 		this.fecha = fecha;
 	}
 
+	@XmlElement
 	public Long getId() {
 		return id;
 	}
@@ -23,6 +28,7 @@ public class Cita {
 		this.id = id;
 	}
 
+	@XmlElement
 	public String getTexto() {
 		return texto;
 	}
@@ -31,6 +37,7 @@ public class Cita {
 		this.texto = texto;
 	}
 
+	@XmlElement
 	public Date getFecha() {
 		return fecha;
 	}

@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name="empleado")
 public class Empleado {
 	private long id;
 	private String nombre;
@@ -21,6 +25,7 @@ public class Empleado {
 		this.citas = new ArrayList<Cita>();
 	}
 
+	@XmlElement
 	public long getId() {
 		return id;
 	}
@@ -29,6 +34,7 @@ public class Empleado {
 		this.id = id;
 	}
 
+	@XmlElement
 	public String getNombre() {
 		return nombre;
 	}
@@ -37,6 +43,7 @@ public class Empleado {
 		this.nombre = nombre;
 	}
 
+	@XmlElement
 	public String getApellidos() {
 		return apellidos;
 	}
@@ -45,6 +52,7 @@ public class Empleado {
 		this.apellidos = apellidos;
 	}
 
+	@XmlElement
 	public Date getFechaNacimiento() {
 		return fechaNacimiento;
 	}
@@ -53,6 +61,7 @@ public class Empleado {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
+	@XmlElement
 	public List<Cita> getCitas() {
 		return citas;
 	}
