@@ -26,7 +26,7 @@ public class EmpleadoController {
 		return repo;
 	}
 	
-	@GetMapping("/empledo/{id}")
+	@GetMapping("/empleado/{id}")
 	public Empleado getEmpleado(@PathVariable Long id){
 		if(id>0 && id<=repo.size()){
 			return repo.get((int)(id-1));
@@ -34,10 +34,10 @@ public class EmpleadoController {
 		return null;
 	}
 	
-	@GetMapping("/empleado/{id}/cita")
-	public List<Cita> getCitasEmpleado(@PathVariable Long id){
-		if(id>0 && id<=repo.size()){
-			return repo.get((int)(id-1)).getCitas();
+	@GetMapping("/empleado/{idEm}/cita")
+	public List<Cita> getCitasEmpleado(@PathVariable Long idEm){
+		if(idEm>0 && idEm<=repo.size()){
+			return repo.get((int)(idEm-1)).getCitas();
 		}
 		return null;
 	}
